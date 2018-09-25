@@ -13,7 +13,7 @@ import java.util.List;
 
 public class WebTest {
     @Test
-    public  void main() throws InterruptedException {
+    public  void test() throws InterruptedException {
         WebDriver driver;
 //        System.setProperty("webdriver.chrome.driver", "D://web_selenium_test//chromedriver.exe");
 //        driver = new ChromeDriver();
