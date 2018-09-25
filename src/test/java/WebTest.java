@@ -1,11 +1,15 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class WebTest {
     @Test
@@ -16,11 +20,13 @@ public class WebTest {
         System.setProperty("webdriver.ie.driver", "D://web_selenium_test//IEDriverServer.exe");
         driver = new InternetExplorerDriver();
         WebDriverWait wait = new WebDriverWait(driver, 1);
-        new WebTest().picc_new(driver);
-//        new WebTest().picc(driver);
+//        new WebTest().picc_new(driver);
+        new WebTest().picc(driver);
     }
     private void picc(WebDriver driver) throws InterruptedException {
         driver.get("http://10.10.40.12:7014/piccallweb/haofeng3g.html");
+//        DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+//        ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
         // 获取 网页的 title
         System.out.println("The testing page title is: " + driver.getTitle());
         //点击测试
@@ -31,18 +37,21 @@ public class WebTest {
 
 
         //选中车险主页面
-//        WebDriver frame = driver.switchTo().frame(1);
-////        frame = frame.switchTo().frame(1);
-//        driver=frame.switchTo().frame(0);
-        driver.switchTo().defaultContent();
+         driver.switchTo().frame(1);
+       driver.switchTo().frame(0);
+        driver.switchTo().frame(0);
 
         //等待页面加载完成
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("CarBrandModelName")));
         //录入“车辆品牌型号”
-        driver.findElement(By.id("YEJ_LicenseNo")).sendKeys("qq");
+        WebElement carBrandModelName = driver.findElement(By.id("CarBrandModelName"));
+        carBrandModelName.clear();
+        carBrandModelName.sendKeys("qq");
         //点击“查询车型”
         driver.findElement(By.name("QueryCarBtn")).click();
+        //选择车型
+        Select carkind = new Select(driver.findElement(By.name("CarQuerySelectList")));
         driver.quit();
     }
 
