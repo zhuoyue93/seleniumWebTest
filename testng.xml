@@ -5,7 +5,7 @@
         <classes>
             <class name="WebTest">
                 <methods>
-                    <include name="main" />
+                    <include name="test" />
                 </methods>
             </class>
         </classes>

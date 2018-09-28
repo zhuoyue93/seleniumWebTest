@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Random;
 
 public class WebTest {
     @Test
@@ -24,7 +25,7 @@ public class WebTest {
         new WebTest().picc(driver);
     }
     private void picc(WebDriver driver) throws InterruptedException {
-        driver.get("http://10.10.40.12:7014/piccallweb/haofeng3g.html");
+        driver.get("http://10.10.40.13:7014/piccallweb/haofeng3g.html");
 //        DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 //        ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
         // 获取 网页的 title
@@ -52,6 +53,13 @@ public class WebTest {
         driver.findElement(By.name("QueryCarBtn")).click();
         //选择车型
         Select carkind = new Select(driver.findElement(By.name("CarQuerySelectList")));
+        carkind.selectByIndex(2);
+        //录入车牌
+        WebElement yej_licenseNo = driver.findElement(By.id("YEJ_LicenseNo"));
+        yej_licenseNo.sendKeys("201805");
+        //录入初等日期
+        WebElement enrollDate = driver.findElement(By.id("EnrollDate"));
+        enrollDate.sendKeys("201805");
         driver.quit();
     }
 
