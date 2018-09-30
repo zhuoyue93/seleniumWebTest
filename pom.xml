@@ -7,9 +7,18 @@
     <groupId>selium</groupId>
     <artifactId>webTest</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>webTest Maven Webapp</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+
     <dependencies>
         <!--testng 依赖-->
         <dependency>
@@ -45,7 +54,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -87,6 +98,7 @@
                 </configuration>
             </plugin>
         </plugins>
+    </pluginManagement>
     </build>
 
 </project>
