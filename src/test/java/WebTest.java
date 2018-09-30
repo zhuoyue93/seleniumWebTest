@@ -28,36 +28,36 @@ public class WebTest {
         driver.get("http://10.10.40.13:7014/piccallweb/haofeng3g.html");
 //        DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 //        ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
-        // »ñÈ¡ ÍøÒ³µÄ title
+        // è·å– ç½‘é¡µçš„ title
         System.out.println("The testing page title is: " + driver.getTitle());
-        //µã»÷²âÊÔ
+        //ç‚¹å‡»æµ‹è¯•
         Select areaCode = new Select(driver.findElement(By.name("AreaCode")));
-        areaCode.selectByVisibleText("¹ãÎ÷");
+        areaCode.selectByVisibleText("å¹¿è¥¿");
         driver.findElement(By.name("button")).click();
         Thread.sleep(1000);
 
 
-        //Ñ¡ÖĞ³µÏÕÖ÷Ò³Ãæ
-         driver.switchTo().frame(1);
-       driver.switchTo().frame(0);
+        //é€‰ä¸­è½¦é™©ä¸»é¡µé¢
+        driver.switchTo().frame(1);
+        driver.switchTo().frame(0);
         driver.switchTo().frame(0);
 
-        //µÈ´ıÒ³Ãæ¼ÓÔØÍê³É
+        //ç­‰å¾…é¡µé¢åŠ è½½å®Œæˆ
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("CarBrandModelName")));
-        //Â¼Èë¡°³µÁ¾Æ·ÅÆĞÍºÅ¡±
+        //å½•å…¥â€œè½¦è¾†å“ç‰Œå‹å·â€
         WebElement carBrandModelName = driver.findElement(By.id("CarBrandModelName"));
         carBrandModelName.clear();
         carBrandModelName.sendKeys("qq");
-        //µã»÷¡°²éÑ¯³µĞÍ¡±
+        //ç‚¹å‡»â€œæŸ¥è¯¢è½¦å‹â€
         driver.findElement(By.name("QueryCarBtn")).click();
-        //Ñ¡Ôñ³µĞÍ
+        //é€‰æ‹©è½¦å‹
         Select carkind = new Select(driver.findElement(By.name("CarQuerySelectList")));
         carkind.selectByIndex(2);
-        //Â¼Èë³µÅÆ
+        //å½•å…¥è½¦ç‰Œ
         WebElement yej_licenseNo = driver.findElement(By.id("YEJ_LicenseNo"));
         yej_licenseNo.sendKeys("201805");
-        //Â¼Èë³õµÈÈÕÆÚ
+        //å½•å…¥åˆç­‰æ—¥æœŸ
         WebElement enrollDate = driver.findElement(By.id("EnrollDate"));
         enrollDate.sendKeys("201805");
         driver.quit();
@@ -65,15 +65,15 @@ public class WebTest {
 
     public void picc_new(WebDriver driver){
         driver.get("http://10.10.40.11:8101/tmgsp/html/haofeng3g.html");
-        // »ñÈ¡ ÍøÒ³µÄ title
+        // è·å– ç½‘é¡µçš„ title
         System.out.println("The testing page title is: " + driver.getTitle());
-        //µã»÷²âÊÔ
+        //ç‚¹å‡»æµ‹è¯•
         driver.findElement(By.name("button")).click();
-        //Ñ¡ÖĞ³µÏÕÖ÷Ò³Ãæ
+        //é€‰ä¸­è½¦é™©ä¸»é¡µé¢
         driver.switchTo().frame(0);
-        //Â¼Èë¡°³µÁ¾Æ·ÅÆĞÍºÅ¡±
+        //å½•å…¥â€œè½¦è¾†å“ç‰Œå‹å·â€
         driver.findElement(By.xpath("//div/input[@id='carbrandmodelname']")).sendKeys("qq");
-        //µã»÷¡°²éÑ¯³µĞÍ¡±
+        //ç‚¹å‡»â€œæŸ¥è¯¢è½¦å‹â€
         driver.findElement(By.id("select_car")).click();
         driver.quit();
     }
